@@ -33,3 +33,14 @@ func _get_mesh_planes(mesh: MeshInstance3D) -> Array[Plane]:
 			face_array.clear(); face_id = -1
 
 	return array
+
+## CFG example
+func read_cfg(cfg)
+	var test := ConfigFile.new()
+	if test.load(cfg) != OK: print("ERROR")
+	for section in test.get_sections():
+		print(section)
+		for key in test.get_section_keys(section):
+			var value = test.get_value(section , key)
+			print("%s is of value %s" % [key , value])
+			
